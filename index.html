@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Tracker</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+    animation: backgroundAnimation 10s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(135deg, #2c3e50, #4ca1af); }
+    100% { background: linear-gradient(135deg, #4ca1af, #2c3e50); }
+}
+
+.scoreboard {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.player {
+    margin: 10px 0;
+}
+
+.player input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.series-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+        .notes {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .notes textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .power-up {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Score Tracker</h1>
+    
+    <div class="scoreboard">
+        <div class="series-title">Series 1: Tay vs KK</div>
+        <div class="player">
+            <span id="player1-name">Tay</span>: <input type="number" id="player1-score" value="0" onchange="saveData()">
+        </div>
+        <div class="player">
+            <span id="player2-name">KK</span>: <input type="number" id="player2-score" value="0" onchange="saveData()">
+        </div>
+    </div>
+    
+    <div class="scoreboard">
+        <div class="series-title">Series 2: KK & Brandon vs Fly & Tay</div>
+        <div class="player">
+            <span id="team1-name">KK & Brandon</span>: <input type="number" id="team1-score" value="0" onchange="saveData()">
+        </div>
+        <div class="player">
+            <span id="team2-name">Fly & Tay</span>: <input type="number" id="team2-score" value="0" onchange="saveData()">
+        </div>
+    </div>
+
+    <div class="power-up">
+        <h2>Power-Up: Gloves</h2>
+        <input type="text" id="gloves-holder" placeholder="Enter name" onchange="saveData()">
+    </div>
+
+    <div class="notes">
+        <h2>Notes on Past Battles</h2>
+        <textarea id="battle-notes" placeholder="Write your notes here..." onchange="saveData()"></textarea>
+    </div>
+
+    <script>
+        // Load data from local storage
+        function loadData() {
+            document.getElementById('player1-score').value = localStorage.getItem('player1-score') || 0;
+            document.getElementById('player2-score').value = localStorage.getItem('player2-score') || 0;
+            document.getElementById('team1-score').value = localStorage.getItem('team1-score') || 0;
+            document.getElementById('team2-score').value = localStorage.getItem('team2-score') || 0;
+            document.getElementById('gloves-holder').value = localStorage.getItem('gloves-holder') || '';
+            document.getElementById('battle-notes').value = localStorage.getItem('battle-notes') || '';
+        }
+
+        // Save data to local storage
+        function saveData() {
+            localStorage.setItem('player1-score', document.getElementById('player1-score').value);
+            localStorage.setItem('player2-score', document.getElementById('player2-score').value);
+            localStorage.setItem('team1-score', document.getElementById('team1-score').value);
+            localStorage.setItem('team2-score', document.getElementById('team2-score').value);
+            localStorage.setItem('gloves-holder', document.getElementById('gloves-holder').value);
+            localStorage.setItem('battle-notes', document.getElementById('battle-notes').value);
+        }
+
+        // Load data when the page loads
+        window.onload = loadData;
+    </script>
+</body>
+</html>
