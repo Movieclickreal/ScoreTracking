@@ -3,134 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score Tracker</title>
+    <title>Scoreboard</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .scoreboard {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .series-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .player {
+            margin-bottom: 10px;
+        }
+
+        .notes-section {
+            margin-top: 20px;
+        }
+
+        .power-up {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            margin-bottom: 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+        body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    color: #fff;
-    text-align: center;
-    padding: 50px;
-    animation: backgroundAnimation 10s infinite alternate;
+    margin: 20px;
+    background: linear-gradient(270deg, blue, black);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
-@keyframes backgroundAnimation {
-    0% { background: linear-gradient(135deg, #2c3e50, #4ca1af); }
-    100% { background: linear-gradient(135deg, #4ca1af, #2c3e50); }
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .scoreboard {
-    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    display: inline-block;
     margin-bottom: 20px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.player {
-    margin: 10px 0;
-}
-
-.player input {
-    width: 50px;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .series-title {
-    font-size: 1.5em;
+    font-weight: bold;
     margin-bottom: 10px;
-    animation: slideIn 1s ease-out;
+    font-size: 1.5em;
+    color: #333;
 }
 
-@keyframes slideIn {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+.player {
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
-        .notes {
-            margin-top: 20px;
-            text-align: left;
-        }
-        .notes textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .power-up {
-            margin-top: 20px;
-        }
-        
-
-
-.power-ups-list {
-    margin-right: 20px;
-}
-
-.power-up-list {
-    margin-bottom: 20px;
-}
-
-.power-up-list h3 {
-    margin: 0;
-}
-
-.power-up-list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.power-up-list li {
-    margin: 5px 0;
-    padding: 5px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
+.notes-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .power-up {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
-.power-up h2 {
-    margin-top: 0;
-}
-
-.power-up input {
-    margin-right: 10px;
-    padding: 5px;
-}
-
-.power-up button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.power-up button:hover {
+button:hover {
     background-color: #0056b3;
 }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: scale(1.05);
+}
+
     </style>
 </head>
 <body>
-    <h1>Score Tracker</h1>
-    
     <div class="scoreboard">
         <div class="series-title">Series 1: Tay vs KK</div>
         <div class="player">
@@ -151,93 +174,128 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="power-ups-list">
-            <h2>Power-Ups</h2>
-            <div class="power-up-list">
-                <h3>Gloves</h3>
-                <ul id="gloves-list"></ul>
-            </div>
-            <div class="power-up-list">
-                <h3>Mist</h3>
-                <ul id="mist-list"></ul>
-            </div>
-            <div class="power-up-list">
-                <h3>Time Extender</h3>
-                <ul id="time-extender-list"></ul>
-            </div>
-            <div class="power-up-list">
-                <h3>Hammer</h3>
-                <ul id="hammer-list"></ul>
-            </div>
+    <div class="notes-section">
+        <h2>Power-Ups</h2>
+        <div class="power-up">
+            <label for="player-name">Player Name:</label>
+            <input type="text" id="player-name">
         </div>
         <div class="power-up">
-            <h2>Power-Up: Gloves</h2>
-            <input type="text" id="gloves-holder" placeholder="Enter name" onchange="saveData()">
-            <button onclick="submitData('gloves-holder', 'gloves-list')">Submit</button>
+            <label for="power-up-type">Power-Up Type:</label>
+            <select id="power-up-type">
+                <option value="mist">Mist</option>
+                <option value="glove">Glove</option>
+                <option value="time-maker">Time Maker</option>
+                <option value="hammer">Hammer</option>
+            </select>
         </div>
-        <div class="power-up">
-            <h2>Power-Up: Mist</h2>
-            <input type="text" id="mist-holder" placeholder="Enter name" onchange="saveData()">
-            <button onclick="submitData('mist-holder', 'mist-list')">Submit</button>
-        </div>
-        <div class="power-up">
-            <h2>Power-Up: Time Extender</h2>
-            <input type="text" id="time-extender-holder" placeholder="Enter name" onchange="saveData()">
-            <button onclick="submitData('time-extender-holder', 'time-extender-list')">Submit</button>
-        </div>
-        <div class="power-up">
-            <h2>Power-Up: Hammer</h2>
-            <input type="text" id="hammer-holder" placeholder="Enter name" onchange="saveData()">
-            <button onclick="submitData('hammer-holder', 'hammer-list')">Submit</button>
-        </div>
-    </div>
-
-
-    <div class="notes">
-        <h2>Notes on Past Battles</h2>
-        <textarea id="battle-notes" placeholder="Write your notes here..." onchange="saveData()"></textarea>
+        <button onclick="addNote()">Add Note</button>
+        <ul id="notes-list"></ul>
     </div>
 
     <script>
-    function saveData() {
-            // Your save data logic here
-        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadData();
+            loadNotes();
+        });
 
-        function submitData(inputId, listId) {
-            const input = document.getElementById(inputId);
-            const list = document.getElementById(listId);
-            if (input && list) {
-                const listItem = document.createElement('li');
-                listItem.textContent = input.value;
-                list.appendChild(listItem);
-                console.log(`Submitted: ${input.value}`);
-                // Clear the input field after submission
-                input.value = '';
-            }
-        }
-
-        // Load data from local storage
-        function loadData() {
-            document.getElementById('player1-score').value = localStorage.getItem('player1-score') || 0;
-            document.getElementById('player2-score').value = localStorage.getItem('player2-score') || 0;
-            document.getElementById('team1-score').value = localStorage.getItem('team1-score') || 0;
-            document.getElementById('team2-score').value = localStorage.getItem('team2-score') || 0;
-            document.getElementById('gloves-holder').value = localStorage.getItem('gloves-holder') || '';
-            document.getElementById('battle-notes').value = localStorage.getItem('battle-notes') || '';
-        }
-
-        // Save data to local storage
         function saveData() {
-            localStorage.setItem('player1-score', document.getElementById('player1-score').value);
-            localStorage.setItem('player2-score', document.getElementById('player2-score').value);
-            localStorage.setItem('team1-score', document.getElementById('team1-score').value);
-            localStorage.setItem('team2-score', document.getElementById('team2-score').value);
-            localStorage.setItem('battle-notes', document.getElementById('battle-notes').value);
+            const player1Score = document.getElementById('player1-score').value;
+            const player2Score = document.getElementById('player2-score').value;
+            const team1Score = document.getElementById('team1-score').value;
+            const team2Score = document.getElementById('team2-score').value;
+
+            localStorage.setItem('player1Score', player1Score);
+            localStorage.setItem('player2Score', player2Score);
+            localStorage.setItem('team1Score', team1Score);
+            localStorage.setItem('team2Score', team2Score);
         }
 
-        // Load data when the page loads
-        window.onload = loadData;
+        function loadData() {
+            const player1Score = localStorage.getItem('player1Score') || 0;
+            const player2Score = localStorage.getItem('player2Score') || 0;
+            const team1Score = localStorage.getItem('team1Score') || 0;
+            const team2Score = localStorage.getItem('team2Score') || 0;
+
+            document.getElementById('player1-score').value = player1Score;
+            document.getElementById('player2-score').value = player2Score;
+            document.getElementById('team1-score').value = team1Score;
+            document.getElementById('team2-score').value = team2Score;
+        }
+
+        function addNote() {
+            const playerName = document.getElementById('player-name').value;
+            const powerUpType = document.getElementById('power-up-type').value;
+            const notesList = document.getElementById('notes-list');
+
+            let existingNote = Array.from(notesList.children).find(note => note.dataset.playerName === playerName && note.dataset.powerUpType === powerUpType);
+
+            if (existingNote) {
+                let count = parseInt(existingNote.dataset.count) + 1;
+                existingNote.dataset.count = count;
+                existingNote.querySelector('.note-text').textContent = `${playerName} got a ${powerUpType} x${count}`;
+            } else {
+                const noteItem = document.createElement('li');
+                noteItem.dataset.playerName = playerName;
+                noteItem.dataset.powerUpType = powerUpType;
+                noteItem.dataset.count = 1;
+
+                const noteText = document.createElement('span');
+                noteText.className = 'note-text';
+                noteText.textContent = `${playerName} got a ${powerUpType} x1`;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = 'Remove';
+                removeBtn.onclick = () => removeNote(noteItem);
+
+                noteItem.appendChild(noteText);
+                noteItem.appendChild(removeBtn);
+                notesList.appendChild(noteItem);
+            }
+
+            saveNoteData();
+        }
+
+        function removeNote(noteItem) {
+            noteItem.remove();
+            saveNoteData();
+        }
+
+        function saveNoteData() {
+            const notesList = document.getElementById('notes-list');
+            const notes = Array.from(notesList.children).map(note => ({
+                playerName: note.dataset.playerName,
+                powerUpType: note.dataset.powerUpType,
+                count: note.dataset.count
+            }));
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const notesList = document.getElementById('notes-list');
+
+            notes.forEach(note => {
+                const noteItem = document.createElement('li');
+                noteItem.dataset.playerName = note.playerName;
+                noteItem.dataset.powerUpType = note.powerUpType;
+                noteItem.dataset.count = note.count;
+
+                const noteText = document.createElement('span');
+                noteText.className = 'note-text';
+                noteText.textContent = `${note.playerName} got a ${note.powerUpType} x${note.count}`;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = 'Remove';
+                removeBtn.onclick = () => removeNote(noteItem);
+
+                noteItem.appendChild(noteText);
+                noteItem.appendChild(removeBtn);
+                notesList.appendChild(noteItem);
+            });
+        }
     </script>
 </body>
 </html>
